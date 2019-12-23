@@ -3,7 +3,6 @@ import { render } from "@testing-library/react";
 import PatchCable from "./";
 
 test("renders learn react link", () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+    const { container } = render(<PatchCable />);
+    expect(container.firstChild).toBeInTheDocument();
 });

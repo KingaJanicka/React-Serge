@@ -4,5 +4,5 @@ import Module from "./";
 
 test("renders learn react link", () => {
   const { container } = render(<Module />);
-  expect(container).toBeInTheDocument();
+  expect(container.firstChild).toBeInTheDocument();
 });
