@@ -4,13 +4,12 @@ import Rack from "./rack";
 import Row from "./row";
 import TestOsc from "./util/test-osc";
 import Oscilloscope from "./oscilloscope";
-
+import BlueControl from "./blue-control";
 function App() {
   return (
     <Rack>
       <Row>
-        <TestOsc />
-        <Oscilloscope width={1000} height={1000} />
+        <BlueControl></BlueControl>
       </Row>
     </Rack>
   );
