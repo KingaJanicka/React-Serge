@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+const Knob = ({ initialValue, min, max }) => {
+  const [value, setValue] = useState(initialValue);
+  const [isActive, setActive] = useState(false);
 
-const Knob = ({ value }) => {
+  const [currentX, setX] = useState(false);
+  useEffect(() => {
+    const listener = window.addEventListener("mouseup", () => {
+      setActive(false);
+      setX(false);
+    });
+    const listenerMove = window.addEventListener("mousemove", e => {
+      if (isActive) {
+        const delta = currentX - e.clientX;
+        setX(delta);
+      }
+    });
+    return () => {
+      window.removeEventListener("mouseup", listener);
+    };
+  }, [currentX, isActive, max, min]);
+  console.log(value);
   const rotation = (value / 100) * 270;
   return (
     <svg
@@ -8,6 +28,10 @@ const Knob = ({ value }) => {
       width="138.97034"
       height="139.26537"
       viewBox="0 0 36.769234 36.847296"
+      onMouseDown={e => {
+        setActive(true);
+        setX(e.clientX);
+      }}
     >
       <g transform="translate(1.5896488,11.370325)">
         <g id="g4104" transform={`rotate(-64,16.917087,7.2302417)`}>
@@ -31,6 +55,16 @@ const Knob = ({ value }) => {
       </g>
     </svg>
   );
+};
+Knob.defaultProps = {
+  min: 0,
+  max: 100,
+  initialValue: 0
+};
+Knob.propTypes = {
+  min: PropTypes.number,
+  max: PropTypes.number,
+  initialValue: PropTypes.number
 };
 
 export default Knob;
