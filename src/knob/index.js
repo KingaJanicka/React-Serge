@@ -1,37 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+
 const Knob = ({ initialValue, min, max }) => {
   const [value, setValue] = useState(initialValue);
-  const [isActive, setActive] = useState(false);
+  const isActive = useRef(null);
+  const x = useRef(null);
 
-  const [currentX, setX] = useState(false);
+  const downListener = e => {
+    isActive.current = true;
+    x.current = e.clientX;
+  };
+
   useEffect(() => {
-    const listener = window.addEventListener("mouseup", () => {
-      setActive(false);
-      setX(false);
-    });
-    const listenerMove = window.addEventListener("mousemove", e => {
-      if (isActive) {
-        const delta = currentX - e.clientX;
-        setX(delta);
+    const moveListener = e => {
+      if (isActive.current) {
+        const delta = e.clientX - x.current;
+        x.current = e.clientX;
+        setValue(Math.min(Math.max(min, value + delta), max));
       }
-    });
-    return () => {
-      window.removeEventListener("mouseup", listener);
     };
-  }, [currentX, isActive, max, min]);
-  console.log(value);
-  const rotation = (value / 100) * 270;
+
+    const upListener = () => {
+      isActive.current = false;
+      x.current = null;
+    };
+
+    window.addEventListener("mouseup", upListener);
+    window.addEventListener("mousemove", moveListener);
+
+    return () => {
+      window.removeEventListener("mouseup", upListener);
+      window.removeEventListener("mousemove", moveListener);
+    };
+  }, [value, max, min]);
+
+  const rotation = (value / max) * 270;
+
   return (
     <svg
       version="1.1"
       width="138.97034"
       height="139.26537"
       viewBox="0 0 36.769234 36.847296"
-      onMouseDown={e => {
-        setActive(true);
-        setX(e.clientX);
-      }}
+      onMouseDown={downListener}
     >
       <g transform="translate(1.5896488,11.370325)">
         <g id="g4104" transform={`rotate(-64,16.917087,7.2302417)`}>
