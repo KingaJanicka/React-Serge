@@ -1,14 +1,14 @@
 import React from "react";
 import Module from "../module";
-import * as Jacks from "../jack";
+import * as Jack from "../jack";
 import Light from "../light";
 const DualProcessor = ({ className }) => {
   return (
     <Module name="Dual Processor" className="dual-processor">
-      <Jacks.BlackJack />
-      <Jacks.BlueJack />
-      <Jacks.RedJack />
-      <Jacks.PurpleJack />
+      <Jack.BlackJack />
+      <Jack.BlueJack />
+      <Jack.RedJack />
+      <Jack.PurpleJack />
       <Light></Light>
       <Light on={true}></Light>
     </Module>
