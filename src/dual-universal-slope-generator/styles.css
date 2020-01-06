@@ -1,3 +1,9 @@
-.dual-universal-slope-generator{
-  
+.dual-universal-slope-generator__module--components {
+  display: grid;
+  grid-template-columns: 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20% 20% 20% 20%;
+}
+.dual-universal-slope-generator__module {
+  display: flex;
+  flex-direction: column;
 }

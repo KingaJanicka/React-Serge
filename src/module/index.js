@@ -7,7 +7,7 @@ const Module = ({ className, children, name }) => {
   return (
     <div className={`${className}__module`}>
       <div className={`${className}__module--name`}>{name}</div>
-      {children}
+      <div className={`${className}__module--components`}>{children}</div>
     </div>
   );
 };
