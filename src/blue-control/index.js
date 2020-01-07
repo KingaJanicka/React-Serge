@@ -10,13 +10,13 @@ import QuadratureOscillator from "../quadrature-oscillator";
 const BlueControl = ({ className }) => {
   return (
     <Panel footer={<h2>Blue Control</h2>}>
-      <RandomSource></RandomSource>
+      {/* <RandomSource></RandomSource>
       <SmoothSteppedGenerator />
-      <DualTransientGenerator />
+      <DualTransientGenerator /> */}
       <DualProcessor></DualProcessor>
       <DualUniversalSlopeGenerator />
-      <DualUniversalSlopeGenerator />
-      <QuadratureOscillator />
+      {/* <DualUniversalSlopeGenerator />
+      <QuadratureOscillator /> */}
     </Panel>
   );
 };

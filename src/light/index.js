@@ -2,7 +2,11 @@ import React from "react";
 
 const Light = ({ className, color, on }) => {
   return (
-    <svg className={`${className}__light light`} width="100" height="100">
+    <svg
+      className={`${className}__light light`}
+      width="auto"
+      viewBox="0 0 96 96"
+    >
       <circle
         cx="50"
         cy="50"

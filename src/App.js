@@ -10,7 +10,6 @@ function App() {
   return (
     <Rack>
       <Row>
-        <Knob value="50" />
         <BlueControl></BlueControl>
       </Row>
     </Rack>
