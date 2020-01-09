@@ -5,10 +5,10 @@ const Toggle = ({ initialState, direction, color }) => {
   const [toggled, setToggled] = useState(initialState);
   return (
     <svg
-      width="19.197332"
-      height="38"
-      viewBox="0 0 5.0792942 7.2594633"
+      width="auto"
+      viewBox="-.5 1 6 7"
       version="1.1"
+      style={{ overflow: "visible" }}
       onClick={() => setToggled(!toggled)}
     >
       <g transform={direction !== "vertical" ? "rotate(90)" : ""}>

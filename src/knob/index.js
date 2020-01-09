@@ -44,8 +44,7 @@ const Knob = ({ initialValue, min, max }) => {
   return (
     <svg
       version="1.1"
-      width="138.97034"
-      height="139.26537"
+      width="auto"
       viewBox="0 0 36.769234 36.847296"
       onMouseDown={downListener}
     >
