@@ -1,6 +1,6 @@
-import React, { createContext, useRef } from "react";
+import React, { createContext, useRef, useReducer } from "react";
 
-export const engineContext = createContext(null);
+export const rackContext = createContext(null);
 
 const Rack = ({ children }) => {
   const engineRef = useRef(null);
@@ -9,9 +9,9 @@ const Rack = ({ children }) => {
     engineRef.current = new AudioContext();
   }
   return (
-    <engineContext.Provider value={engineRef.current}>
+    <rackContext.Provider value={{ engine: engineRef.current }}>
       {children}
-    </engineContext.Provider>
+    </rackContext.Provider>
   );
 };
 

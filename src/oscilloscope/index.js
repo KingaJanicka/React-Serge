@@ -4,7 +4,7 @@ import { engineContext } from "../rack";
 const Oscilloscope = ({ input, width, height }) => {
   const canvas = useRef(null);
   const analyser = useRef(null);
-  const engine = useContext(engineContext);
+  const { engine } = useContext(engineContext);
 
   useEffect(() => {
     if (engine && input) {
